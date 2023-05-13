@@ -1,7 +1,7 @@
 import styles from "../styles/style";
 import {StyleSheet, TouchableNativeFeedback, View} from "react-native";
 import {Text} from "react-native-paper";
-import {AntDesign, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
+import {AntDesign,FontAwesome5, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import theme from "../../theme/theme";
 
 const ProfileMenu = ({menu ,setMenu}) => {
@@ -24,10 +24,10 @@ const ProfileMenu = ({menu ,setMenu}) => {
             <TouchableNativeFeedback onPress={() => setMenu(2)}>
                 <View style={[innerStyles.profile_menu_item , menu === 2 ? innerStyles.profile_menu_item_active : {}]}>
                     <Text style={[menu === 2 ? innerStyles.profile_menu_title_text_active : {} ,{textAlign: "center"}]}>
-                        <Entypo name="list" size={24} />
+                        <Entypo name="shop" size={24} />
                     </Text>
                     <Text style={[innerStyles.profile_menu_title_text , menu === 2 ? innerStyles.profile_menu_title_text_active : {}]}>
-                        سفارشات
+                        انبار
                     </Text>
                 </View>
             </TouchableNativeFeedback>
@@ -37,10 +37,11 @@ const ProfileMenu = ({menu ,setMenu}) => {
             <TouchableNativeFeedback onPress={() => setMenu(3)}>
                 <View style={[innerStyles.profile_menu_item , menu === 3 ? innerStyles.profile_menu_item_active : {}]}>
                     <Text style={[menu === 3 ? innerStyles.profile_menu_title_text_active : {} ,{textAlign: "center"}]}>
-                        <Ionicons name="wallet-outline" size={24} />
+
+                        <MaterialCommunityIcons name="clipboard-list-outline" size={24} />
                     </Text>
                     <Text style={[innerStyles.profile_menu_title_text , menu === 3 ? innerStyles.profile_menu_title_text_active : {}]}>
-                        کیف پول
+                        لیست انتظار
                     </Text>
                 </View>
             </TouchableNativeFeedback>
@@ -50,10 +51,10 @@ const ProfileMenu = ({menu ,setMenu}) => {
             <TouchableNativeFeedback onPress={() => setMenu(4)}>
                 <View style={[innerStyles.profile_menu_item , menu === 4 ? innerStyles.profile_menu_item_active : {}]}>
                     <Text style={[menu === 4 ? innerStyles.profile_menu_title_text_active : {} ,{textAlign: "center"}]}>
-                        <MaterialCommunityIcons name="ticket-percent-outline" size={24} />
+                        <FontAwesome5 name="boxes" size={24} />
                     </Text>
                     <Text style={[innerStyles.profile_menu_title_text , menu === 4 ? innerStyles.profile_menu_title_text_active : {}]}>
-                        تخفیفات
+                        بسته های من
                     </Text>
                 </View>
             </TouchableNativeFeedback>
@@ -63,10 +64,10 @@ const ProfileMenu = ({menu ,setMenu}) => {
             <TouchableNativeFeedback onPress={() => setMenu(5)}>
                 <View style={[innerStyles.profile_menu_item , menu === 5 ? innerStyles.profile_menu_item_active : {}]}>
                     <Text style={[menu === 5 ? innerStyles.profile_menu_title_text_active : {} ,{textAlign: "center"}]}>
-                        <Ionicons name="location-outline" size={24} />
+                        <Ionicons name="exit-outline" size={24} />
                     </Text>
                     <Text style={[innerStyles.profile_menu_title_text , menu === 5 ? innerStyles.profile_menu_title_text_active : {}]}>
-                        آدرس ها
+                        خروج
                     </Text>
                 </View>
             </TouchableNativeFeedback>

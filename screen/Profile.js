@@ -14,9 +14,6 @@ const Profile = () => {
     return (
         <View>
             <View style={innerStyles.profileHeader}>
-                <Text style={innerStyles.profile_title}>
-                    پروفایل من
-                </Text>
                 <View>
                     <Image style={innerStyles.avatar} source={require('./../assets/images/profile.jpg')} />
                 </View>
@@ -24,7 +21,7 @@ const Profile = () => {
                     محمد محمدی
                 </Text>
                 <Text style={innerStyles.avatar_role}>
-                    کاربر عادی
+                    انبار دار
                 </Text>
             </View>
             <ProfileMenu menu={menu} setMenu={setMenu} />

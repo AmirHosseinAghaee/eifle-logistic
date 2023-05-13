@@ -1,10 +1,11 @@
-import {ImageComponent, StyleSheet, TouchableNativeFeedback, View} from "react-native";
+import {Image, StyleSheet, TouchableNativeFeedback, View} from "react-native";
 import {Button, Text} from "react-native-paper";
 import {TextInput} from "react-native";
 import theme from "../theme/theme";
-import { FontAwesome5 , Octicons } from '@expo/vector-icons';
+import {AntDesign, FontAwesome5, Octicons} from '@expo/vector-icons';
 import {useState} from "react";
 import styles from "../components/styles/style";
+import FormInput from "../components/FormInput";
 
 const Login = (props) => {
     const [text , setText] = useState('');
@@ -15,29 +16,31 @@ const Login = (props) => {
     return (
         <View>
             <View>
-                <Text style={innerStyles.bg}> ورود به ایفل </Text>
+                <Text style={innerStyles.bg}> ورود به ایفل یار </Text>
             </View>
             <View style={innerStyles.card}>
-                <FontAwesome5 style={innerStyles.icon} name="user" size={100} color="black" />
-                <Text style={innerStyles.login_text}>
-                    برای ورود لطفا شماره موبایل خود را وارد نمایید
-                </Text>
-                <View style={styles.container}>
-                    <View style={[styles.row,innerStyles.formGroup]}>
-                        <View style={innerStyles.formIcon}>
-                            <Octicons name="device-mobile" size={24} color="black" />
-                        </View>
-                        <View style={styles.col}>
-                            <TextInput
-                                inputMode={"numeric"}
-                                keyboardType={'numeric'}
-                                maxLength={11}
-                                placeholder={"شماره تلفن خود را وارد نمایید."}
-                                style={innerStyles.formControl}
+                <Image source={require('./../assets/icon.png')} style={{marginLeft :"auto" ,marginRight :"auto" ,marginBottom : 50}}/>
+                <View style={[styles.container]}>
+                    <View style={[styles.row , {justifyContent : "center"}]}>
+                        <View style={styles.col_8}>
+                            <FormInput
+                                label={'نام کاربری'}
+                                placeholder={'نام کاربری'}
+                                keyboardType={'default'}
+                                inputMode={'text'}
+                                icon={<AntDesign name="user" size={24} color="black" />}
+                            />
+                            <FormInput
+                                label={'رمز عبور'}
+                                placeholder={'رمز عبور'}
+                                keyboardType={'default'}
+                                inputMode={'text'}
+                                icon={<AntDesign name="lock" size={24} color="black" />}
                             />
                         </View>
                     </View>
                 </View>
+
                 <View>
                     <Button
                         onPress={handelOtp} mode={'contained-tonal'}
@@ -76,7 +79,7 @@ const innerStyles = StyleSheet.create({
         marginBottom : 10
     },
     login_text : {
-        textAlign :"center" ,
+        textAlign :"right" ,
         fontFamily : "Black" ,
         marginBottom : 10
     },

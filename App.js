@@ -48,7 +48,7 @@ export default function App() {
                         // gestureDirection : "horizontal"
                     }}
                 >
-                    <Stack.Screen name="Home" component={Tabs} options={eifleConfigHeader}/>
+                    <Stack.Screen name="Home" component={Profile} options={eifleConfigHeader}/>
                     {/*<Stack.Screen name="Home" component={NewsCard} options={{headerShown:false}}/>*/}
                     <Stack.Screen name="Product" component={Product} options={eifleConfigHeader}/>
                     <Stack.Screen name="ProductList" component={ProductList} options={eifleConfigHeader}/>
