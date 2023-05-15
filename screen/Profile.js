@@ -1,15 +1,13 @@
 import {Image, ScrollView, StyleSheet, View} from "react-native";
-import {Button, Divider, Text} from "react-native-paper";
+import {Text} from "react-native-paper";
 import theme from "../theme/theme";
-import Wallet from "../components/Profile/Wallet";
-import DiscountList from "../components/Profile/DiscountList";
 import ProfileMenu from "../components/Profile/ProfileMenu";
-import UserPorfile from "../components/Profile/UserPorfile";
-import Orders from "../components/Profile/Orders";
-import UserAddress from "../components/Profile/UserAddress";
 import {useState} from "react";
-import OrderInfo from "../components/Profile/OrderInfo";
-const Profile = () => {
+import Store from "../components/Profile/Store";
+import WatingList from "../components/Profile/WatingList";
+import UserBoxies from "../components/Profile/UserBoxies";
+import UserProfile from "../components/Profile/UserProfile";
+const Profile = ({navigation}) => {
     const [menu , setMenu] = useState(2);
     return (
         <View>
@@ -24,25 +22,19 @@ const Profile = () => {
                     انبار دار
                 </Text>
             </View>
-            <ProfileMenu menu={menu} setMenu={setMenu} />
+            <ProfileMenu navigation={navigation} menu={menu} setMenu={setMenu} />
             <ScrollView>
                 {
-                    menu === 1 && <UserPorfile />
+                    menu === 1 && <UserProfile />
                 }
                 {
-                    menu === 2 && <Orders />
+                    menu === 2 && <Store />
                 }
                 {
-                    menu === 2.1 && <OrderInfo />
+                    menu === 3 && <WatingList />
                 }
                 {
-                    menu === 3 && <Wallet />
-                }
-                {
-                    menu === 4 && <DiscountList />
-                }
-                {
-                    menu === 5 && <UserAddress />
+                    menu === 4 && <UserBoxies />
                 }
 
             </ScrollView>

@@ -4,7 +4,7 @@ import {Text} from "react-native-paper";
 import {AntDesign,FontAwesome5, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import theme from "../../theme/theme";
 
-const ProfileMenu = ({menu ,setMenu}) => {
+const ProfileMenu = ({navigation ,menu ,setMenu}) => {
     return (<View style={[styles.row ,innerStyles.profile_menu]}>
 
         <View style={[styles.col]}>
@@ -61,12 +61,12 @@ const ProfileMenu = ({menu ,setMenu}) => {
         </View>
 
         <View style={styles.col}>
-            <TouchableNativeFeedback onPress={() => setMenu(5)}>
-                <View style={[innerStyles.profile_menu_item , menu === 5 ? innerStyles.profile_menu_item_active : {}]}>
-                    <Text style={[menu === 5 ? innerStyles.profile_menu_title_text_active : {} ,{textAlign: "center"}]}>
+            <TouchableNativeFeedback onPress={() => navigation.push('/login')}>
+                <View style={[innerStyles.profile_menu_item ]}>
+                    <Text style={[{textAlign: "center"}]}>
                         <Ionicons name="exit-outline" size={24} />
                     </Text>
-                    <Text style={[innerStyles.profile_menu_title_text , menu === 5 ? innerStyles.profile_menu_title_text_active : {}]}>
+                    <Text style={[innerStyles.profile_menu_title_text]}>
                         خروج
                     </Text>
                 </View>

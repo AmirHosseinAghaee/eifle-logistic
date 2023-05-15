@@ -166,6 +166,9 @@ const styles = StyleSheet.create({
         fontSize : 12,
         padding : 0 ,
     } ,
+    rounded : {
+        borderRadius : 10 ,
+    }
 
 });
 

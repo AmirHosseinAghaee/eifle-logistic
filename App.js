@@ -1,22 +1,11 @@
 import {useFonts} from 'expo-font';
 import {Provider as PaperProvider} from 'react-native-paper';
-import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import Product from "./screen/product";
 import theme from "./theme/theme";
 import eifleConfigHeader from "./components/eifelHeaderConfig";
-import Tabs from "./components/Tabs";
 import Login from "./screen/Login";
-import Otp from "./screen/Otp";
-import Issue from "./screen/Issue";
-import Invoice from "./screen/Invoice";
-import Cart from "./screen/Cart";
-import ProductList from "./screen/ProductList";
-import Filter from "./components/Filter";
 import Profile from "./screen/Profile";
-import News from "./screen/News";
-import NewsInfo from "./screen/NewsInfo";
 
 
 const Stack = createNativeStackNavigator();
@@ -48,17 +37,7 @@ export default function App() {
                         // gestureDirection : "horizontal"
                     }}
                 >
-                    <Stack.Screen name="Home" component={Profile} options={eifleConfigHeader}/>
-                    {/*<Stack.Screen name="Home" component={NewsCard} options={{headerShown:false}}/>*/}
-                    <Stack.Screen name="Product" component={Product} options={eifleConfigHeader}/>
-                    <Stack.Screen name="ProductList" component={ProductList} options={eifleConfigHeader}/>
-                    <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
-                    <Stack.Screen name="Issue" component={Issue} options={eifleConfigHeader}/>
-                    <Stack.Screen name="Invoice" component={Invoice} options={eifleConfigHeader}/>
-                    <Stack.Screen name="News" component={News} options={eifleConfigHeader}/>
-                    <Stack.Screen name="NewsInfo" component={NewsInfo} options={eifleConfigHeader}/>
-                    <Stack.Screen name="Cart" component={Cart} options={eifleConfigHeader}/>
-                    <Stack.Screen name="Otp" component={Otp} options={{headerShown:false}}/>
+                    <Stack.Screen name="Home" component={Login} options={eifleConfigHeader}/>
                     <Stack.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
                 </Stack.Navigator>
             </NavigationContainer>

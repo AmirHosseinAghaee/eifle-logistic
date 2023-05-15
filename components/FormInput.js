@@ -47,7 +47,7 @@ const innerStyles = StyleSheet.create({
         paddingVertical : 10 ,
         borderRadius : 10,
         shadowColor : "#ccc",
-        elevation: 3,
+        elevation: 1,
         // transform: [{ scaleX: -1 }],
         backgroundColor : "#FAFAFA",
     },

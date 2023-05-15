@@ -1,8 +1,7 @@
-import {Image, StyleSheet, TouchableNativeFeedback, View} from "react-native";
+import {Image, StyleSheet, View} from "react-native";
 import {Button, Text} from "react-native-paper";
-import {TextInput} from "react-native";
 import theme from "../theme/theme";
-import {AntDesign, FontAwesome5, Octicons} from '@expo/vector-icons';
+import {AntDesign} from '@expo/vector-icons';
 import {useState} from "react";
 import styles from "../components/styles/style";
 import FormInput from "../components/FormInput";
@@ -10,8 +9,7 @@ import FormInput from "../components/FormInput";
 const Login = (props) => {
     const [text , setText] = useState('');
     const handelOtp = () => {
-        console.log('Handel Otp')
-        props.navigation.navigate('Otp')
+        props.navigation.navigate('Profile')
     }
     return (
         <View>
@@ -45,16 +43,8 @@ const Login = (props) => {
                     <Button
                         onPress={handelOtp} mode={'contained-tonal'}
                         mode={"contained"} style={innerStyles.primary_btn}>
-                        <Text style={innerStyles.primary_btn_text}> ارسال کد تایید </Text>
+                        <Text style={innerStyles.primary_btn_text}> ورود </Text>
                     </Button>
-                </View>
-                <View>
-                    <TouchableNativeFeedback>
-                    <Button style={innerStyles.tonal_btn}>
-
-                        <Text style={innerStyles.tonal_btn_text}> کد معرف </Text>
-                    </Button>
-                    </TouchableNativeFeedback>
                 </View>
             </View>
 
