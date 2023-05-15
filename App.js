@@ -6,6 +6,7 @@ import theme from "./theme/theme";
 import eifleConfigHeader from "./components/eifelHeaderConfig";
 import Login from "./screen/Login";
 import Profile from "./screen/Profile";
+import test from "./screen/CustomDrawer";
 
 
 const Stack = createNativeStackNavigator();
@@ -37,7 +38,7 @@ export default function App() {
                         // gestureDirection : "horizontal"
                     }}
                 >
-                    <Stack.Screen name="Home" component={Login} options={eifleConfigHeader}/>
+                    <Stack.Screen name="Home" component={Login} options={{headerShown:false}}/>
                     <Stack.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
                 </Stack.Navigator>
             </NavigationContainer>

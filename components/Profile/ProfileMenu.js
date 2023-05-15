@@ -61,7 +61,7 @@ const ProfileMenu = ({navigation ,menu ,setMenu}) => {
         </View>
 
         <View style={styles.col}>
-            <TouchableNativeFeedback onPress={() => navigation.push('/login')}>
+            <TouchableNativeFeedback onPress={() => navigation.navigate('Home')}>
                 <View style={[innerStyles.profile_menu_item ]}>
                     <Text style={[{textAlign: "center"}]}>
                         <Ionicons name="exit-outline" size={24} />

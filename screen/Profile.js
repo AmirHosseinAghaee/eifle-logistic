@@ -7,10 +7,12 @@ import Store from "../components/Profile/Store";
 import WatingList from "../components/Profile/WatingList";
 import UserBoxies from "../components/Profile/UserBoxies";
 import UserProfile from "../components/Profile/UserProfile";
+import UsersList from "../components/UsersList";
+import CustomDrawer from "./CustomDrawer";
 const Profile = ({navigation}) => {
     const [menu , setMenu] = useState(2);
     return (
-        <View>
+        <View style={{flex: 1}}>
             <View style={innerStyles.profileHeader}>
                 <View>
                     <Image style={innerStyles.avatar} source={require('./../assets/images/profile.jpg')} />
@@ -38,6 +40,10 @@ const Profile = ({navigation}) => {
                 }
 
             </ScrollView>
+
+            <CustomDrawer>
+                <UsersList />
+            </CustomDrawer>
         </View>
     ) ;
 }
