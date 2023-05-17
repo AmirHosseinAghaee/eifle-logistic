@@ -5,7 +5,7 @@ import {Button, Chip, Divider} from "react-native-paper";
 import theme from "../../theme/theme";
 import {useState} from "react";
 
-function AccordionItem({type}) {
+function AccordionItem({setDrawer,type}) {
     const [expanded, setExpanded] = useState(false);
     const handlePress = () => setExpanded(!expanded);
 
@@ -58,7 +58,7 @@ function AccordionItem({type}) {
                                 <View style={styles.row}>
                                     {
                                         type !== 'wating' && (
-                                            <Button mode={"contained"} style={innerStyles.rounded} onPress={() => console.log("give box")}>
+                                            <Button mode={"contained"} style={innerStyles.rounded} onPress={() => setDrawer('open')}>
                                                 <Text style={{fontFamily : "Light"}}>
                                                     تحویل بسته
                                                 </Text>

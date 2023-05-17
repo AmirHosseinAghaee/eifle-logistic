@@ -11,6 +11,7 @@ import UsersList from "../components/UsersList";
 import CustomDrawer from "./CustomDrawer";
 const Profile = ({navigation}) => {
     const [menu , setMenu] = useState(2);
+    const [Drawer , setDrawer] = useState('close');
     return (
         <View style={{flex: 1}}>
             <View style={innerStyles.profileHeader}>
@@ -27,22 +28,24 @@ const Profile = ({navigation}) => {
             <ProfileMenu navigation={navigation} menu={menu} setMenu={setMenu} />
             <ScrollView>
                 {
-                    menu === 1 && <UserProfile />
+                    menu === 1 && <UserProfile  />
                 }
                 {
-                    menu === 2 && <Store />
+                    menu === 2 && <Store  setDrawer={setDrawer} />
                 }
                 {
-                    menu === 3 && <WatingList />
+                    menu === 3 && <WatingList  setDrawer={setDrawer} />
                 }
                 {
-                    menu === 4 && <UserBoxies />
+                    menu === 4 && <UserBoxies setDrawer={setDrawer} />
                 }
 
             </ScrollView>
 
-            <CustomDrawer>
-                <UsersList />
+            <CustomDrawer status={Drawer}>
+                {(handleClosePress) => (
+                    <UsersList setDrawer={setDrawer} handleClosePress={handleClosePress}/>
+                )}
             </CustomDrawer>
         </View>
     ) ;
@@ -99,6 +102,10 @@ const innerStyles = StyleSheet.create({
         marginHorizontal : 10,
         marginTop : -55 ,
     },
+    CustomDrawer : {
+        position  : 'absolute',
+        top :0 ,
+    }
 
 })
 

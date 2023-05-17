@@ -1,9 +1,11 @@
-import React, {useCallback, useMemo, useRef} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Button} from "react-native-paper";
 import BottomSheet from '@gorhom/bottom-sheet';
 
-const CustomDrawer = ({height = '60%' , children}) => {
+const CustomDrawer = ({height = '60%' , children , status}) => {
+
+    const [DrawerStatus , setDrawerStatus] = useState(status);
     // ref
     const bottomSheetRef = useRef(null);
 
@@ -14,32 +16,42 @@ const CustomDrawer = ({height = '60%' , children}) => {
     const handleSheetChanges = useCallback((index: number) => {
         console.log('handleSheetChanges', index);
     }, []);
-/*
 
     const handleSnapPress = useCallback((index) => {
         bottomSheetRef.current.snapToIndex(index);
     }, []);
-*/
 
-    const handleClosePress = () => bottomSheetRef.current.close()
+    const handleClosePress = () => {
+        setDrawerStatus('close')
+        bottomSheetRef.current.close()
+    }
+
+    useEffect(() => {
+        if(status && status ==='open')
+        {
+            setDrawerStatus('open');
+            handleSnapPress(0);
+
+        }
+        else
+        {
+            bottomSheetRef.current.close()
+            setDrawerStatus('close')
+        }
+
+    },[status])
 
 
     // renders
     return (
-        <View style={innertStyles.container}>
-            {/*<Button title="Close Sheet" onPress={() => handleSnapPress(0)}>
-                <Text>
-                    Open
-                </Text>
-            </Button>*/}
+        <View style={DrawerStatus && DrawerStatus ==='open' ? innertStyles.container : ""}>
             <BottomSheet
                 ref={bottomSheetRef}
                 index={1}
                 snapPoints={snapPoints}
                 onChange={handleSheetChanges}
             >
-                {children}
-
+                {children(handleClosePress)}
             </BottomSheet>
         </View>
     );
@@ -49,6 +61,12 @@ const innertStyles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 24,
+        position : "absolute",
+        backgroundColor : "rgba(0,0,0,0.28)",
+        bottom : 0,
+        left : 0 ,
+        right : 0 ,
+        top : 0,
         // backgroundColor: 'grey',
     },
 });

@@ -4,13 +4,13 @@ import AccordionItem from "./AccordionItem";
 import CustomDrawer from "../../screen/CustomDrawer";
 import UsersList from "../UsersList";
 
-function Store(props) {
+function Store({setDrawer}) {
 
     return (
         <View style={[styles.container , {paddingTop : 10 , paddingBottom : 350}]}>
             {
                 [...Array(10)].map((el,index) => (
-                    <AccordionItem type={'store'} key={index} />
+                    <AccordionItem setDrawer={setDrawer} type={'store'} key={index} />
                 ))
             }
         </View>

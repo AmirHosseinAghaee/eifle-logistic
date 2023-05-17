@@ -4,7 +4,7 @@ import {Avatar, Button} from "react-native-paper";
 import React from "react";
 import {ScrollView} from "react-native-gesture-handler";
 
-function UsersList({handleClosePress}) {
+function UsersList({setDrawer,handleClosePress}) {
     return (
         <View style={{paddingBottom: 200}}>
             <View style={styles.container}>
@@ -12,7 +12,7 @@ function UsersList({handleClosePress}) {
                     <View style={styles.col_12}>
                         <View style={[styles.row, {justifyContent: "space-between"}]}>
                             <Text style={{fontFamily: "Black"}}>تحویل بسته به ایفل یار </Text>
-                            <Button title="Close Sheet" onPress={handleClosePress}>
+                            <Button title="Close Sheet" onPress={() => {handleClosePress();setDrawer('false')}}>
                                 close
                             </Button>
                         </View>
