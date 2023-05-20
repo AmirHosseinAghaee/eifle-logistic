@@ -15,6 +15,7 @@ const CustomDrawer = ({height = '60%' , children , status}) => {
     // callbacks
     const handleSheetChanges = useCallback((index: number) => {
         console.log('handleSheetChanges', index);
+        // handleSnapPress(index);
     }, []);
 
     const handleSnapPress = useCallback((index) => {
@@ -26,7 +27,7 @@ const CustomDrawer = ({height = '60%' , children , status}) => {
         bottomSheetRef.current.close()
     }
 
-    useEffect(() => {
+    useEffect( () => {
         if(status && status ==='open')
         {
             setDrawerStatus('open');
@@ -45,6 +46,7 @@ const CustomDrawer = ({height = '60%' , children , status}) => {
     // renders
     return (
         <View style={DrawerStatus && DrawerStatus ==='open' ? innertStyles.container : ""}>
+        {/*<View>*/}
             <BottomSheet
                 ref={bottomSheetRef}
                 index={1}

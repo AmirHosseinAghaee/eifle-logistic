@@ -23,7 +23,7 @@ function UsersList({setDrawer,handleClosePress}) {
                         <View style={{paddingBottom: 200}}>
                             {
                                 [...Array(10)].map((el, index) => (
-                                    <TouchableNativeFeedback key={index}>
+                                    <TouchableNativeFeedback key={index} onPress={() => {setDrawer('false')}}>
                                         <View style={[styles.row , innerStyles.user_card , {marginBottom : 10}]}>
                                             <View style={styles.col_auto}>
                                                 <Avatar.Image size={50}

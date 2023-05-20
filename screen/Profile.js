@@ -9,6 +9,7 @@ import UserBoxies from "../components/Profile/UserBoxies";
 import UserProfile from "../components/Profile/UserProfile";
 import UsersList from "../components/UsersList";
 import CustomDrawer from "./CustomDrawer";
+import BoxResiveCode from "../components/BoxResiveCode";
 const Profile = ({navigation}) => {
     const [menu , setMenu] = useState(2);
     const [Drawer , setDrawer] = useState('close');
@@ -44,7 +45,8 @@ const Profile = ({navigation}) => {
 
             <CustomDrawer status={Drawer}>
                 {(handleClosePress) => (
-                    <UsersList setDrawer={setDrawer} handleClosePress={handleClosePress}/>
+                    // <UsersList setDrawer={setDrawer} handleClosePress={handleClosePress}/>
+                    <BoxResiveCode setDrawer={setDrawer} handleClosePress={handleClosePress}/>
                 )}
             </CustomDrawer>
         </View>

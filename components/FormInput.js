@@ -10,9 +10,14 @@ const FormInput = ({label,placeholder,inputMode='text' ,keyboardType='default', 
                 {label}
             </Text>
             <View style={[styles.row,innerStyles.formGroup]}>
-                <View style={innerStyles.formIcon}>
-                    {icon}
-                </View>
+                {
+                    icon && (
+                        <View style={innerStyles.formIcon}>
+                            {icon}
+                        </View>
+                    )
+                }
+
                 <View style={styles.col}>
                     <TextInput
                         inputMode={inputMode}
