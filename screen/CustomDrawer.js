@@ -3,14 +3,14 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Button} from "react-native-paper";
 import BottomSheet from '@gorhom/bottom-sheet';
 
-const CustomDrawer = ({height = '60%' , children , status}) => {
+const CustomDrawer = ({height = '15%' , children , status}) => {
 
     const [DrawerStatus , setDrawerStatus] = useState(status);
     // ref
     const bottomSheetRef = useRef(null);
 
     // variables
-    const snapPoints = useMemo(() => [height, '70%'], []);
+    const snapPoints = useMemo(() => [height ,'55%'], []);
 
     // callbacks
     const handleSheetChanges = useCallback((index: number) => {
@@ -26,12 +26,18 @@ const CustomDrawer = ({height = '60%' , children , status}) => {
         setDrawerStatus('close')
         bottomSheetRef.current.close()
     }
+    useEffect(() => {
+        console.log("i am here")
+    },[])
 
     useEffect( () => {
         if(status && status ==='open')
         {
             setDrawerStatus('open');
-            handleSnapPress(0);
+            setTimeout(()=> {
+                handleSnapPress(1);
+            },500)
+
 
         }
         else
