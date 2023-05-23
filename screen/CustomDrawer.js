@@ -26,19 +26,14 @@ const CustomDrawer = ({height = '15%' , children , status}) => {
         setDrawerStatus('close')
         bottomSheetRef.current.close()
     }
-    useEffect(() => {
-        console.log("i am here")
-    },[])
 
     useEffect( () => {
         if(status && status ==='open')
         {
             setDrawerStatus('open');
             setTimeout(()=> {
-                handleSnapPress(1);
+                handleSnapPress(0);
             },500)
-
-
         }
         else
         {

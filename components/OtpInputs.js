@@ -1,11 +1,25 @@
 import styles from "./styles/style";
 import {StyleSheet, View} from "react-native";
-import {TextInput} from "react-native-paper";
+import {Text, TextInput} from "react-native-paper";
 import {createRef, useRef, useState} from "react";
 
 function OtpInputs({count=5}) {
     const [numbers, setNumbers] = useState([]);
     const inputsRef = useRef([ ...Array(count).keys() ].map(() => createRef()));
+    const handelOtp = (text,index) => {
+        const num = [...numbers];
+        num[index] = text ;
+        setNumbers(num)
+    }
+    const handleKeyDown = (e,index) => {
+        console.log(numbers[index] === '')
+        if(e.nativeEvent.key !== "Backspace")
+            inputsRef.current[index+1]?.focus()
+        else if(e.nativeEvent.key === "Backspace" && numbers[index] === '')
+            inputsRef.current[index-1]?.focus()
+
+    }
+
     return (
         <View style={[styles.row ,innerStyles.otpArea]}>
             {[ ...Array(count).keys() ].map((item, index) => (
@@ -26,6 +40,9 @@ function OtpInputs({count=5}) {
                     />
                 </View>
             ))}
+            <Text>
+            {numbers.toString()}
+            </Text>
         </View>
     );
 }

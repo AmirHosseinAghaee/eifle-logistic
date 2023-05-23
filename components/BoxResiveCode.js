@@ -8,20 +8,6 @@ const BoxResiveCode = ({count = 5,handleClosePress,setDrawer}) => {
     const [numbers, setNumbers] = useState([]);
     const inputsRef = useRef([ ...Array(count).keys() ].map(() => createRef()));
 
-    const handelOtp = (text,index) => {
-        const num = [...numbers];
-        num[index] = text ;
-        setNumbers(num)
-    }
-    const handleKeyDown = (e,index) => {
-        console.log(numbers[index] === '')
-        if(e.nativeEvent.key !== "Backspace")
-            inputsRef.current[index+1]?.focus()
-        else if(e.nativeEvent.key === "Backspace" && numbers[index] === '')
-            inputsRef.current[index-1]?.focus()
-
-        console.log(numbers)
-    }
 
     return (
         <View style={styles.container}>
@@ -38,7 +24,8 @@ const BoxResiveCode = ({count = 5,handleClosePress,setDrawer}) => {
                     </Text>
                 </Button>
             </View>
-            <OtpInputs count={6}/>
+            <OtpInputs
+                count={5}/>
         </View>
     );
 };
