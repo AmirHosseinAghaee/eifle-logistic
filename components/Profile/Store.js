@@ -10,7 +10,7 @@ function Store({setDrawer,setDrawerHeight}) {
         <View style={[styles.container , {paddingTop : 10 , paddingBottom : 350}]}>
             {
                 [...Array(10)].map((el,index) => (
-                    <AccordionItem setDrawerHeight={setDrawerHeight} setDrawer={setDrawer} type={'store'} key={index} />
+                    <AccordionItem setDrawerHeight={setDrawerHeight} setDrawer={setDrawer} type={'store'} key={index} index={index} />
                 ))
             }
         </View>

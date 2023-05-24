@@ -16,11 +16,11 @@ const Login = (props) => {
             <View>
                 <Text style={innerStyles.bg}> ورود به ایفل یار </Text>
             </View>
-            <View style={innerStyles.card}>
+            <View style={[innerStyles.card]}>
                 <Image source={require('./../assets/icon.png')} style={{marginLeft :"auto" ,marginRight :"auto" ,marginBottom : 50}}/>
                 <View style={[styles.container]}>
                     <View style={[styles.row , {justifyContent : "center"}]}>
-                        <View style={styles.col_8}>
+                        <View style={styles.col_11}>
                             <FormInput
                                 label={'نام کاربری'}
                                 placeholder={'نام کاربری'}

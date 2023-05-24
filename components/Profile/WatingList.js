@@ -8,7 +8,7 @@ function WatingList(props) {
         <View style={[styles.container , {paddingTop : 10 , paddingBottom : 350}]}>
             {
                 [...Array(7)].map((el,index) => (
-                    <AccordionItem type={'wating'} key={index} />
+                    <AccordionItem type={'wating'} key={index} index={index} />
                 ))
             }
 

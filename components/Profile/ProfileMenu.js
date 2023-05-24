@@ -1,6 +1,6 @@
 import styles from "../styles/style";
-import {Alert, StyleSheet, TouchableNativeFeedback, View} from "react-native";
-import {Button, Dialog, Portal, Text} from "react-native-paper";
+import {StyleSheet, TouchableNativeFeedback, View} from "react-native";
+import {Text} from "react-native-paper";
 import {AntDesign,FontAwesome5, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import theme from "../../theme/theme";
 import {useState} from "react";

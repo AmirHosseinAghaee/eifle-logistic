@@ -1,9 +1,10 @@
 import styles from "./styles/style";
 import {StyleSheet, View} from "react-native";
-import {Text, TextInput} from "react-native-paper";
+import {Button, Text, TextInput} from "react-native-paper";
 import {createRef, useRef, useState} from "react";
+import CustomAlert from "./CustomAlert";
 
-function OtpInputs({count=5}) {
+function OtpInputs({count=5 , handelSubmitKey}) {
     const [numbers, setNumbers] = useState([]);
     const inputsRef = useRef([ ...Array(count).keys() ].map(() => createRef()));
     const handelOtp = (text,index) => {
@@ -11,13 +12,13 @@ function OtpInputs({count=5}) {
         num[index] = text ;
         setNumbers(num)
     }
+
     const handleKeyDown = (e,index) => {
-        console.log(numbers[index] === '')
+
         if(e.nativeEvent.key !== "Backspace")
             inputsRef.current[index+1]?.focus()
         else if(e.nativeEvent.key === "Backspace" && numbers[index] === '')
             inputsRef.current[index-1]?.focus()
-
     }
 
     return (
@@ -40,9 +41,14 @@ function OtpInputs({count=5}) {
                     />
                 </View>
             ))}
-            <Text>
-            {numbers.toString()}
-            </Text>
+            <Button mode={'contained'} style={{ borderRadius : 10 , width : "100%" , marginTop : 20}}
+            onPress={() => handelSubmitKey(numbers)}
+            >
+                <Text style={{fontFamily : "Light" , color : "#fff"}}>
+                تایید
+                </Text>
+            </Button>
+
         </View>
     );
 }

@@ -1,32 +1,62 @@
 import styles from "../styles/style";
-import {StyleSheet, Text, TouchableNativeFeedback, View} from "react-native";
+import {Alert, Linking, Platform, StyleSheet, Text, TouchableNativeFeedback, View} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
-import {Button, Chip, Divider} from "react-native-paper";
+import {Button, Chip, Divider, IconButton} from "react-native-paper";
 import theme from "../../theme/theme";
+import Animated, {FadeOut, Layout, SlideInRight} from "react-native-reanimated";
 import {useState} from "react";
 
-function AccordionItem({setDrawer,type,setDrawerHeight}) {
+function AccordionItem({setDrawer,type,setDrawerHeight,index}) {
     const [expanded, setExpanded] = useState(false);
     const handlePress = () => setExpanded(!expanded);
+    const callNumber = phone => {
+        let phoneNumber = phone;
+        if (Platform.OS !== 'android') {
+            phoneNumber = `telprompt:${phone}`;
+        }
+        else  {
+            phoneNumber = `tel:${phone}`;
+        }
+        Linking.canOpenURL(phoneNumber)
+            .then(supported => {
+                if (!supported) {
+                    Alert.alert('Phone number is not available');
+                } else {
+                    return Linking.openURL(phoneNumber);
+                }
+            })
+            .catch(err => console.log(err));
+    };
+
 
     return (
         <TouchableNativeFeedback onPress={handlePress} >
-            <View style={[styles.card, {marginBottom: 10 , padding: 10}]}>
+            <Animated.View
+                entering={SlideInRight.delay(index*30)}
+                exiting={FadeOut}
+                layout={Layout.springify()}
+                style={[styles.card, {marginBottom: 10 , padding: 10}]}>
             <View onPress={handlePress} style={[styles.row]}>
-                <View style={styles.col}>
-                    <Text style={{fontFamily: "ExtraBold"}}>
-                        شماره سفارش 1135984
-                    </Text>
-                </View>
+                    <View style={styles.col}>
+                        <Text style={{fontFamily: "ExtraBold"}}>
+                            شماره سفارش 1135984
+                        </Text>
+                    </View>
                 <View style={styles.col_auto}>
                     <View style={styles.row}>
                         {
-                            type === 'my_box' && <Ionicons onPress={() => console.log("give box")} name="call-outline" size={20} style={{marginLeft : 10}} color="black"/>
+                            type === 'my_box' && (
+                                <IconButton  icon="phone" mode={'outlined'} onPress={() => callNumber('0912345678')} />
+
+                            )
                         }
 
                         {
-                            expanded ? (<Ionicons name="chevron-up" size={24} color="black"/>) : (
-                                <Ionicons  name="chevron-down" size={24} color="black"/>)
+                            expanded ? (
+                                <IconButton  icon="close" mode={'outlined'} onPress={handlePress} />
+                                ) : (
+                                <IconButton icon="dots-horizontal" mode={'outlined'} onPress={handlePress} />
+                                )
                         }
                     </View>
 
@@ -95,7 +125,7 @@ function AccordionItem({setDrawer,type,setDrawerHeight}) {
                 )
             }
 
-        </View>
+        </Animated.View>
         </TouchableNativeFeedback>
     );
 }

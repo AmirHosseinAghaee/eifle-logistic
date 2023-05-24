@@ -49,16 +49,20 @@ function CustomAlert({status=false,setStatus , title,text ,accept_text,reject_te
                 style={{backgroundColor: "#fff"}}
                 visible={visible} onDismiss={hideDialog}>
                 {
-                    getIcons() && (
+                    color && getIcons() && (
                         <Dialog.Icon icon={getIcons()} color={getColor()} size={50}/>
                     )
                 }
+                {
+                    title && (
+                        <Dialog.Title style={{textAlign:"center" , fontSize : 20}}>
+                            <Text style={{fontFamily : "Bold"}}>
+                                {title}
+                            </Text>
+                        </Dialog.Title>
+                    )
+                }
 
-                <Dialog.Title style={{textAlign:"center" , fontSize : 20}}>
-                    <Text style={{fontFamily : "Bold"}}>
-                        {title}
-                    </Text>
-                </Dialog.Title>
                 {
                     text &&
                     (
