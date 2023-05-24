@@ -35,7 +35,7 @@ function AccordionItem({setDrawer,type,setDrawerHeight,index}) {
                 entering={SlideInRight.delay(index*30)}
                 exiting={FadeOut}
                 layout={Layout.springify()}
-                style={[styles.card, {marginBottom: 10 , padding: 10}]}>
+                style={[styles.card, {marginBottom: 10 , padding: 10 , overflow:'hidden'}]}>
             <View onPress={handlePress} style={[styles.row]}>
                     <View style={styles.col}>
                         <Text style={{fontFamily: "ExtraBold"}}>
