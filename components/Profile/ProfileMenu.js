@@ -1,10 +1,14 @@
 import styles from "../styles/style";
-import {StyleSheet, TouchableNativeFeedback, View} from "react-native";
-import {Text} from "react-native-paper";
+import {Alert, StyleSheet, TouchableNativeFeedback, View} from "react-native";
+import {Button, Dialog, Portal, Text} from "react-native-paper";
 import {AntDesign,FontAwesome5, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import theme from "../../theme/theme";
+import {useState} from "react";
+import CustomAlert from "../CustomAlert";
 
 const ProfileMenu = ({navigation ,menu ,setMenu}) => {
+    const [visible, setVisible] = useState(false);
+
     return (<View style={[styles.row ,innerStyles.profile_menu]}>
 
         <View style={[styles.col]}>
@@ -61,7 +65,7 @@ const ProfileMenu = ({navigation ,menu ,setMenu}) => {
         </View>
 
         <View style={styles.col}>
-            <TouchableNativeFeedback onPress={() => navigation.navigate('Home')}>
+            <TouchableNativeFeedback onPress={() => setVisible(true)}>
                 <View style={[innerStyles.profile_menu_item ]}>
                     <Text style={[{textAlign: "center"}]}>
                         <Ionicons name="exit-outline" size={24} />
@@ -72,6 +76,18 @@ const ProfileMenu = ({navigation ,menu ,setMenu}) => {
                 </View>
             </TouchableNativeFeedback>
         </View>
+       <CustomAlert
+           status={visible}
+           title={'توجه!'}
+           handelConfirm={() => {
+               navigation.push('Home') ;
+               setVisible(false);
+           }}
+           text={'آیا از خروج مطمئن هستید ؟'}
+           setStatus={setVisible}
+           accept_text={'تایید'}
+           reject_text={'رد'}
+       />
     </View>) ;
 }
 const innerStyles = StyleSheet.create({
