@@ -14,6 +14,19 @@ import ChoseReceiverType from "../components/ChoseReceiverType";
 const Profile = ({navigation}) => {
     const [menu , setMenu] = useState(2);
     const [Drawer , setDrawer] = useState('close');
+    const [DrawerHeight , setDrawerHeight] = useState('20%');
+    const [DrawerType , setDrawerType] = useState('ChoseReceiverType');
+
+    const handelDrawer = (handleClosePress) => {
+        switch (DrawerType) {
+            case "UsersList" :
+                return <UsersList setDrawerHeight={setDrawerHeight} setDrawerType={setDrawerType} setDrawer={setDrawer} handleClosePress={handleClosePress}/>
+            case "BoxResiveCode" :
+                return <BoxResiveCode setDrawerHeight={setDrawerHeight} setDrawerType={setDrawerType} setDrawer={setDrawer} handleClosePress={handleClosePress}/>
+            default :
+                return <ChoseReceiverType setDrawerHeight={setDrawerHeight} setDrawerType={setDrawerType} setDrawer={setDrawer} handleClosePress={handleClosePress}/>
+        }
+    }
     return (
         <View style={{flex: 1}}>
             <View style={innerStyles.profileHeader}>
@@ -33,23 +46,19 @@ const Profile = ({navigation}) => {
                     menu === 1 && <UserProfile  />
                 }
                 {
-                    menu === 2 && <Store  setDrawer={setDrawer} />
+                    menu === 2 && <Store setDrawerHeight={setDrawerHeight}  setDrawer={setDrawer} />
                 }
                 {
-                    menu === 3 && <WatingList  setDrawer={setDrawer} />
+                    menu === 3 && <WatingList setDrawerHeight={setDrawerHeight}  setDrawer={setDrawer} />
                 }
                 {
-                    menu === 4 && <UserBoxies setDrawer={setDrawer} />
+                    menu === 4 && <UserBoxies setDrawerHeight={setDrawerHeight} setDrawer={setDrawer} />
                 }
 
             </ScrollView>
 
-            <CustomDrawer height={'20%'} status={Drawer}>
-                {(handleClosePress) => (
-                    // <UsersList setDrawer={setDrawer} handleClosePress={handleClosePress}/>
-                    // <BoxResiveCode setDrawer={setDrawer} handleClosePress={handleClosePress}/>
-                    <ChoseReceiverType setDrawer={setDrawer} handleClosePress={handleClosePress}/>
-                )}
+            <CustomDrawer setDrawerType={setDrawerType} height={DrawerHeight} status={Drawer}>
+                {(handleClosePress) => handelDrawer(handleClosePress)}
             </CustomDrawer>
         </View>
     ) ;

@@ -6,18 +6,21 @@ import theme from "./../theme/theme";
 import generateBoxShadowStyle from "./styles/generateBoxShadowStyle";
 import { Feather } from '@expo/vector-icons';
 
-function ChoseReceiverType({setDrawer ,handleClosePress}) {
-    const [selected , setSelected] = useState(0);
+function ChoseReceiverType({setDrawer ,handleClosePress,setDrawerHeight,setDrawerType}) {
+    const [selected , setSelected] = useState(-1);
+    const handelClose = () => {
+        setDrawerHeight('20%');
+        setDrawerType('ChoseReceiverType');
+        handleClosePress();
+        setDrawer('false')
+    }
     return (
         <View style={styles.container}>
             <View style={[styles.row , {justifyContent : "space-between" , marginVertical : 10}]}>
                 <Text style={{fontFamily : "Black"}}>
                     کد تحویل بسته
                 </Text>
-                <Button  mode={'text'} onPress={() => {
-                    handleClosePress();
-                    setDrawer(false)
-                }}>
+                <Button  mode={'text'} onPress={handelClose}>
                     <Text style={{fontFamily : "Light"}}>
                         بستن
                     </Text>
@@ -25,7 +28,11 @@ function ChoseReceiverType({setDrawer ,handleClosePress}) {
             </View>
             <View style={styles.row}>
                 <Button mode={'contained-tonal'} style={[innerStyles.btn_shadow , styles.col_6 , innerStyles.new_btn , selected === 0 ? innerStyles.new_btn_active : {}]}
-                        onPress={() => setSelected(0)}
+                        onPress={() => {
+                            setSelected(0);
+                            setDrawerHeight('35%')
+                            setDrawerType('BoxResiveCode')
+                        }}
                 >
 
                     <Text style={[selected === 0 ? innerStyles.new_btn_active_text : {} ,{fontFamily : "Light"}]}>
@@ -34,7 +41,11 @@ function ChoseReceiverType({setDrawer ,handleClosePress}) {
                     </Text>
                 </Button>
                 <Button mode={'contained-tonal'} style={[styles.col_6 , innerStyles.new_btn,selected === 1 ? innerStyles.new_btn_active : {}]}
-                        onPress={() => setSelected(1)}
+                        onPress={() => {
+                            setSelected(1);
+                            setDrawerHeight('60%')
+                            setDrawerType('UsersList')
+                        }}
                 >
                     <Text style={[{fontFamily : "Light" } , selected === 1 ? innerStyles.new_btn_active_text : {}]}>
                         <Feather name={selected === 1 ? 'check-circle' : 'circle'} />

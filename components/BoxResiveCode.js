@@ -4,27 +4,27 @@ import {Button, TextInput} from "react-native-paper";
 import styles from "./styles/style";
 import OtpInputs from "./OtpInputs";
 
-const BoxResiveCode = ({count = 5,handleClosePress,setDrawer}) => {
-    const [numbers, setNumbers] = useState([]);
-    const inputsRef = useRef([ ...Array(count).keys() ].map(() => createRef()));
-
-
+const BoxResiveCode = ({count = 5,handleClosePress,setDrawer,setDrawerHeight,setDrawerType}) => {
+    const handelClose = () => {
+        setDrawerHeight('20%');
+        setDrawerType('ChoseReceiverType');
+        handleClosePress();
+        setDrawer('false')
+    }
     return (
         <View style={styles.container}>
             <View style={[styles.row , {justifyContent : "space-between" , marginVertical : 10}]}>
                 <Text style={{fontFamily : "Black"}}>
                     کد تحویل بسته
                 </Text>
-                <Button  mode={'text'} onPress={() => {
-                    handleClosePress();
-                    setDrawer(false)
-                }}>
+                <Button  mode={'text'} onPress={handelClose}>
                     <Text style={{fontFamily : "Light"}}>
                      بستن
                     </Text>
                 </Button>
             </View>
             <OtpInputs
+                handleClosePress={handleClosePress}
                 count={5}/>
         </View>
     );
