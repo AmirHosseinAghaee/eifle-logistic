@@ -41,9 +41,12 @@ const Login = (props) => {
 
                 <View>
                     <Button
-                        onPress={handelOtp} mode={'contained-tonal'}
-                        mode={"contained"} style={innerStyles.primary_btn}>
-                        <Text style={innerStyles.primary_btn_text}> ورود </Text>
+                        onPress={handelOtp}
+                        mode={'contained'}
+                        style={innerStyles.primary_btn}>
+                        <Text style={innerStyles.primary_btn_text}>
+                            ورود
+                        </Text>
                     </Button>
                 </View>
             </View>

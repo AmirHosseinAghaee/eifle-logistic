@@ -13,13 +13,25 @@ import Profile from "./screen/Profile";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-    const [Loading , setLoading] = useState(true);
+    const [splashLoading , setSplashLoading] = useState(true);
     useEffect(() => {
-        setTimeout(()=>{
-            setLoading(false)
-            console.log("a ima here ...." + Loading)
-        } , 2000)
+        async function prepare() {
+            try {
+                await new Promise(resolve => setTimeout(resolve, 5000));
+            } catch (e) {
+                console.warn(e);
+            } finally {
+                // Tell the application to render
+                setSplashLoading(false);
+            }
+        }
+        prepare();
     },[])
+
+
+    useEffect(() => {
+        console.log('splashLoading', splashLoading);
+    }, [splashLoading])
 
     const [loadedFonts] = useFonts({
         ExtraLight: require('./assets/fonts/Vazirmatn-RD-FD-ExtraLight.ttf'),
@@ -36,22 +48,17 @@ export default function App() {
 
 
     //
-    if (!loadedFonts) {
-        return false;
-    }
-
-
-
-    return (
-        <AnimatedSplash
-            translucent={true}
-            isLoaded={false}
-            logoImage={require("./assets/splash.png")}
-            backgroundColor={theme.colors.primary}
-            logoHeight={200}
-            logoWidth={200}
-        >
-        <PaperProvider theme={theme}>
+    if (loadedFonts) {
+        return (
+           /* <AnimatedSplash
+                translucent={true}
+                isLoaded={splashLoading}
+                logoImage={require("./assets/logo.png")}
+                backgroundColor={theme.colors.primary}
+                logoHeight={200}
+                logoWidth={200}
+            >*/
+            <PaperProvider theme={theme}>
 
                 <NavigationContainer>
                     <Stack.Navigator
@@ -65,7 +72,15 @@ export default function App() {
                     </Stack.Navigator>
                 </NavigationContainer>
 
-        </PaperProvider>
-    </AnimatedSplash>
-    );
+            </PaperProvider>
+            /*</AnimatedSplash>*/
+        );
+    }
+    else {
+        return false ;
+    }
+
+
+
+
 }

@@ -16,8 +16,8 @@ const CustomDrawer = ({height='20%' , children , status,setDrawerType}) => {
 
     // callbacks
     const handleSheetChanges = useCallback((index: number) => {
-        console.log('handleSheetChanges', index);
-        // handleSnapPress(index);
+        // console.log('handleSheetChanges', index);
+        handleSnapPress(index);
     }, []);
 
     const handleSnapPress = useCallback((index) => {

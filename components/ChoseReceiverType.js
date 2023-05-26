@@ -26,7 +26,7 @@ function ChoseReceiverType({setDrawer ,handleClosePress,setDrawerHeight,setDrawe
                     </Text>
                 </Button>
             </View>
-            <View style={styles.row}>
+            <View style={[styles.row,{justifyContent : "space-between"}]}>
                 <Button mode={'contained-tonal'} style={[innerStyles.btn_shadow , styles.col_6 , innerStyles.new_btn , selected === 0 ? innerStyles.new_btn_active : {}]}
                         onPress={() => {
                             setSelected(0);
@@ -36,11 +36,12 @@ function ChoseReceiverType({setDrawer ,handleClosePress,setDrawerHeight,setDrawe
                 >
 
                     <Text style={[selected === 0 ? innerStyles.new_btn_active_text : {} ,{fontFamily : "Light"}]}>
-                        <Feather name={selected === 0 ? 'check-circle' : 'circle'} />
                         مشتری
                     </Text>
                 </Button>
-                <Button mode={'contained-tonal'} style={[styles.col_6 , innerStyles.new_btn,selected === 1 ? innerStyles.new_btn_active : {}]}
+                <Button
+                        mode={'contained-tonal'}
+                        style={[styles.col_6 , innerStyles.new_btn,selected === 1 ? innerStyles.new_btn_active : {}]}
                         onPress={() => {
                             setSelected(1);
                             setDrawerHeight('60%')
@@ -48,7 +49,6 @@ function ChoseReceiverType({setDrawer ,handleClosePress,setDrawerHeight,setDrawe
                         }}
                 >
                     <Text style={[{fontFamily : "Light" } , selected === 1 ? innerStyles.new_btn_active_text : {}]}>
-                        <Feather name={selected === 1 ? 'check-circle' : 'circle'} />
                         ایفل یار
                     </Text>
                 </Button>
@@ -61,7 +61,9 @@ const innerStyles = StyleSheet.create({
     new_btn : {
         backgroundColor : "#f5f5f5",
         elevation: 5,
-        borderRadius : 10
+        borderRadius : 10 ,
+        width : '49%',
+
     },
     new_btn_active : {
         borderStyle : "solid" ,
